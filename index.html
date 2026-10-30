@@ -74,12 +74,17 @@
       place-items: center;
       border-radius: 10px 10px 10px 4px;
       background: var(--ink);
-      color: var(--green);
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: -.06em;
     }
+    .mark-text {
+      display: inline-flex;
+      align-items: baseline;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -.08em;
+      line-height: 1;
+    }
+    .mark-text span { margin-left: 2px; color: var(--green); }
     .nav { display: flex; align-items: center; gap: 31px; }
     .nav a {
       color: #536058;
@@ -408,7 +413,9 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="#inicio" aria-label="JP3, início">
-        <span class="mark" aria-hidden="true">JP3</span>
+        <span class="mark" aria-hidden="true">
+          <span class="mark-text">JP<span>3</span></span>
+        </span>
       </a>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#projetos">Projetos</a>
@@ -552,7 +559,7 @@
         <span class="eyebrow">Vamos tirar uma ideia do papel?</span>
         <h2 id="contact-title">Estou a uma mensagem de distância.</h2>
         <p>Tem um projeto, uma oportunidade ou só quer trocar uma ideia sobre desenvolvimento web? Vou gostar de conversar.</p>
-        <a class="button" href="mailto:seuemail@exemplo.com">
+        <a class="button" href="mailto:jp3desenvolvimentoweb@gmail.com">
           Me escreva
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6.5 10 11l6-4.5M5 5h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>

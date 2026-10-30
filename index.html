@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Portfólio de João Paulo, desenvolvedor web. Projetos, habilidades e contato.">
+  <title>João Paulo — Desenvolvedor Web</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f4ef;
+      --ink: #17231e;
+      --muted: #64716a;
+      --line: #dedfd7;
+      --green: #c8f169;
+      --deep-green: #19372b;
+      --white: #fffefa;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #81aa42;
+      content: "";
+    }
+    .site-header { padding-top: 24px; }
+    .header-inner {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+    .mark {
+      width: 44px;
+      height: 36px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 10px 10px 10px 4px;
+      background: var(--ink);
+      color: var(--green);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -.06em;
+    }
+    .nav { display: flex; align-items: center; gap: 31px; }
+    .nav a {
+      color: #536058;
+      font-size: 13px;
+      font-weight: 550;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--ink); }
+    .nav .nav-contact {
+      padding: 11px 16px;
+      border: 1px solid #c9cdc3;
+      border-radius: 7px;
+      color: var(--ink);
+    }
+    .nav .nav-contact:hover { border-color: var(--ink); }
+
+    .hero {
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 46px;
+      padding-block: 74px 87px;
+    }
+    .hero-copy { max-width: 610px; }
+    .hero h1 {
+      margin: 22px 0 20px;
+      font-size: clamp(48px, 6.3vw, 78px);
+      font-weight: 570;
+      letter-spacing: -.075em;
+      line-height: .99;
+    }
+    .hero h1 span {
+      color: #647b59;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.07em;
+    }
+    .hero-copy > p {
+      max-width: 480px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 21px; margin-top: 31px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      border-radius: 7px;
+      background: var(--ink);
+      color: white;
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #294536; }
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .text-link svg, .button svg { width: 15px; height: 15px; }
+    .availability { display: flex; align-items: center; gap: 9px; margin-top: 45px; color: #536058; font-size: 12px; }
+    .availability i { width: 8px; height: 8px; border-radius: 50%; background: #83aa4e; box-shadow: 0 0 0 4px #83aa4e22; }
+
+    .visual { position: relative; min-height: 390px; display: grid; place-items: center; }
+    .visual-halo {
+      position: absolute;
+      width: min(100%, 400px);
+      aspect-ratio: 1;
+      border: 1px solid #dfe1d7;
+      border-radius: 50%;
+    }
+    .visual-halo::before, .visual-halo::after {
+      position: absolute;
+      border: 1px solid #e5e6de;
+      border-radius: 50%;
+      content: "";
+    }
+    .visual-halo::before { inset: 9%; }
+    .visual-halo::after { inset: 20%; }
+    .code-card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 372px);
+      overflow: hidden;
+      border: 1px solid #3b5549;
+      border-radius: 13px;
+      background: #1b2b23;
+      box-shadow: 0 25px 65px #223a2a27;
+      transform: rotate(2deg);
+    }
+    .code-top {
+      height: 45px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 15px;
+      border-bottom: 1px solid #ffffff12;
+      color: #a7b5a9;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 10px;
+    }
+    .code-top .dots { display: flex; gap: 5px; margin-right: auto; }
+    .code-top .dots i { width: 7px; height: 7px; border-radius: 50%; background: #829178; }
+    .code-top .dots i:first-child { background: #e48d72; }
+    .code-top .dots i:nth-child(2) { background: #e3c56d; }
+    .code-top .dots i:nth-child(3) { background: #89b785; }
+    .code-body {
+      padding: 25px 23px 24px;
+      color: #e4e9dc;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      line-height: 2.15;
+    }
+    .code-row { display: flex; gap: 17px; white-space: pre; }
+    .line-no { color: #697d6d; user-select: none; }
+    .code-key { color: #c8f169; }
+    .code-string { color: #e6b18c; }
+    .code-value { color: #a7c7df; }
+    .code-muted { color: #9baa9c; }
+    .code-card.is-typing .code-character {
+      opacity: 0;
+      animation: code-type .01s steps(1, end) forwards;
+      animation-delay: var(--typing-delay);
+    }
+    @keyframes code-type { to { opacity: 1; } }
+    .skills-strip { border-block: 1px solid var(--line); }
+    .skills-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .skills-label { color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    .skill-list { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .skill {
+      padding: 8px 12px;
+      border: 1px solid #dedfd7;
+      border-radius: 5px;
+      color: #38463e;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+    }
+
+    .section { padding-block: 104px; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .section-heading h2 {
+      margin: 13px 0 0;
+      font-size: clamp(34px, 4vw, 48px);
+      font-weight: 560;
+      letter-spacing: -.065em;
+      line-height: 1.05;
+    }
+    .section-heading > p { max-width: 345px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--white);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px #24372b10; }
+    .project-preview { height: 250px; display: grid; place-items: center; overflow: hidden; }
+    .preview-shop { background: #e8eee1; }
+    .preview-dashboard { background: #e8e9e3; }
+    .preview-browser {
+      width: 78%;
+      min-height: 174px;
+      overflow: hidden;
+      border: 1px solid #d9ddd1;
+      border-radius: 8px;
+      background: #fffefa;
+      box-shadow: 0 17px 32px #2237291b;
+      transform: rotate(-2deg);
+    }
+    .preview-bar {
+      height: 23px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding-inline: 9px;
+      border-bottom: 1px solid #edf0e9;
+    }
+    .preview-bar i { width: 5px; height: 5px; border-radius: 50%; background: #d7dcd1; }
+    .shop-screen { padding: 15px 17px; }
+    .shop-nav { display: flex; align-items: center; justify-content: space-between; color: #26352b; font-size: 8px; font-weight: 750; }
+    .shop-nav span:last-child { color: #75806f; font-size: 7px; font-weight: 500; }
+    .shop-hero { display: grid; grid-template-columns: 1fr .75fr; align-items: center; gap: 10px; padding-top: 22px; }
+    .shop-title { max-width: 125px; color: #27382b; font-family: var(--serif); font-size: 22px; line-height: .98; }
+    .shop-caption { margin-top: 8px; color: #7a8377; font-size: 6px; }
+    .shop-cta { width: 67px; height: 17px; margin-top: 11px; border-radius: 3px; background: #345743; }
+    .product-shape { position: relative; height: 103px; border-radius: 45% 45% 7px 7px; background: #d5dfc5; }
+    .product-shape::before { position: absolute; top: 16px; left: 50%; width: 47px; height: 69px; border-radius: 19px 19px 12px 12px; background: linear-gradient(110deg, #f3efe3 0%, #d7d6c6 70%); box-shadow: 12px 8px 20px #334a3215; content: ""; transform: translateX(-50%); }
+    .product-shape::after { position: absolute; top: 10px; left: 50%; width: 19px; height: 13px; border: 3px solid #c6c8b7; border-bottom: 0; border-radius: 9px 9px 0 0; content: ""; transform: translateX(-50%); }
+    .dashboard-screen { display: grid; grid-template-columns: 43px 1fr; min-height: 151px; }
+    .dashboard-sidebar { padding: 13px 7px; background: #20372c; }
+    .dashboard-sidebar i { display: block; width: 25px; height: 4px; margin-bottom: 10px; border-radius: 2px; background: #6b826e; }
+    .dashboard-sidebar i:first-child { background: #c8f169; }
+    .dashboard-main { padding: 12px; }
+    .dashboard-title { color: #293a30; font-size: 9px; font-weight: 700; }
+    .dashboard-sub { margin-top: 3px; color: #a0a89e; font-size: 6px; }
+    .stat-row { display: flex; gap: 5px; margin-top: 10px; }
+    .stat { flex: 1; padding: 7px 5px; border: 1px solid #edf0e9; border-radius: 4px; }
+    .stat b { display: block; color: #3a5544; font-size: 9px; }
+    .stat span { color: #939c92; font-size: 5px; }
+    .chart { height: 51px; display: flex; align-items: end; gap: 5px; margin-top: 9px; padding: 6px 8px 0; border: 1px solid #edf0e9; border-bottom: 0; }
+    .chart i { flex: 1; border-radius: 2px 2px 0 0; background: #9fb88c; }
+    .chart i:nth-child(1) { height: 28%; }
+    .chart i:nth-child(2) { height: 48%; }
+    .chart i:nth-child(3) { height: 38%; }
+    .chart i:nth-child(4) { height: 68%; }
+    .chart i:nth-child(5) { height: 54%; }
+    .chart i:nth-child(6) { height: 84%; background: #557860; }
+    .project-info { padding: 21px 22px 23px; }
+    .project-meta { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+    .project-type { color: #748073; font-size: 10px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
+    .project-year { color: #8b9488; font-size: 11px; }
+    .project-info h3 { margin: 11px 0 7px; font-size: 20px; font-weight: 620; letter-spacing: -.045em; }
+    .project-info p { max-width: 440px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .project-tags span { padding: 6px 9px; border-radius: 4px; background: #f0f1eb; color: #566259; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; }
+    .project-disclaimer { margin: 16px 0 0; color: #7a8479; font-size: 11px; line-height: 1.6; }
+
+    .about { padding-block: 75px; background: var(--deep-green); color: #f7f8f2; }
+    .about-inner { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .about .eyebrow { color: #afc0ad; }
+    .about .eyebrow::before { background: var(--green); }
+    .about h2 { max-width: 320px; margin: 16px 0 0; font-size: clamp(34px, 4vw, 46px); font-weight: 520; letter-spacing: -.06em; line-height: 1.08; }
+    .about-copy p { margin: 1px 0 19px; color: #c2cec3; font-size: 15px; line-height: 1.85; }
+    .about-values { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
+    .about-values span { padding: 8px 11px; border: 1px solid #ffffff2b; border-radius: 5px; color: #e4ebe1; font-size: 11px; }
+
+    .contact { padding-block: 102px 93px; text-align: center; }
+    .contact h2 { margin: 15px auto 13px; font-size: clamp(38px, 5vw, 58px); font-weight: 550; letter-spacing: -.07em; line-height: 1.05; }
+    .contact > .wrap > p { max-width: 480px; margin: 0 auto; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .contact .button { margin-top: 25px; }
+    .social-links { display: flex; justify-content: center; gap: 23px; margin-top: 25px; }
+    .social-links a { color: #68746b; font-size: 12px; text-decoration: none; }
+    .social-links a:hover { color: var(--ink); }
+    .site-footer { border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 69px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #7a847b; font-size: 11px; }
+    .footer-inner a { color: #58655c; text-decoration: none; }
+
+    .motion-ready [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s cubic-bezier(.2, .7, .2, 1);
+    }
+    .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .motion-ready .project-card:nth-child(2) { transition-delay: .12s; }
+
+    :focus-visible { outline: 3px solid #87a951; outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .site-header { padding-top: 17px; }
+      .header-inner { align-items: flex-start; }
+      .nav { gap: 16px; }
+      .nav a { font-size: 12px; }
+      .nav a:nth-child(2) { display: none; }
+      .nav .nav-contact { padding: 9px 11px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 13px; padding-block: 76px 53px; }
+      .hero h1 { max-width: 560px; font-size: clamp(52px, 12vw, 74px); }
+      .hero-copy > p { font-size: 15px; }
+      .availability { margin-top: 30px; }
+      .visual { min-height: 345px; margin-top: 4px; }
+      .visual-halo { width: min(84vw, 340px); }
+      .code-card { width: min(88%, 350px); }
+      .skills-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 14px; padding-block: 20px; }
+      .skill-list { justify-content: flex-start; gap: 7px; }
+      .section { padding-block: 75px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 13px; margin-bottom: 27px; }
+      .section-heading > p { max-width: 460px; }
+      .projects-grid { grid-template-columns: 1fr; gap: 17px; }
+      .project-preview { height: 235px; }
+      .about { padding-block: 64px; }
+      .about-inner { grid-template-columns: 1fr; gap: 24px; }
+      .about h2 { max-width: 440px; }
+      .contact { padding-block: 77px 70px; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: calc(100% - 32px); }
+      .header-inner { align-items: center; }
+      .wordmark { font-size: 14px; }
+      .nav { gap: 11px; }
+      .nav a { font-size: 11px; }
+      .nav .nav-contact { padding: 8px; }
+      .hero { padding-top: 62px; }
+      .hero h1 { font-size: 52px; }
+      .hero-actions { gap: 15px; }
+      .visual { min-height: 310px; }
+      .code-body { padding: 20px 14px; font-size: 10px; }
+      .code-row { gap: 11px; }
+      .project-preview { height: 205px; }
+      .preview-browser { width: 86%; }
+      .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; padding-block: 17px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#inicio" aria-label="JP3, início">
+        <span class="mark" aria-hidden="true">JP3</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a class="nav-contact" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Desenvolvedor web</span>
+        <h1 id="hero-title">Ideias boas merecem uma <span>web melhor.</span></h1>
+        <p>Crio experiências digitais claras, rápidas e cuidadosas — da primeira ideia até cada detalhe na tela.</p>
+        <div class="hero-actions">
+          <a class="button" href="#projetos">
+            Ver projetos
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="text-link" href="#sobre">Um pouco sobre mim <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="availability"><i aria-hidden="true"></i> Aberto a oportunidades e boas conversas</div>
+      </div>
+
+      <div class="visual" aria-label="Ilustração de código de uma página web">
+        <div class="visual-halo" aria-hidden="true"></div>
+        <div class="code-card" aria-hidden="true">
+          <div class="code-top">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span>meu-proximo-projeto.html</span>
+          </div>
+          <div class="code-body">
+            <div class="code-row"><span class="line-no">01</span><span class="code-content"><span class="code-muted">&lt;</span><span class="code-key">section</span><span class="code-muted">&gt;</span></span></div>
+            <div class="code-row"><span class="line-no">02</span><span class="code-content">  <span class="code-muted">&lt;</span><span class="code-key">h1</span><span class="code-muted">&gt;</span></span></div>
+            <div class="code-row"><span class="line-no">03</span><span class="code-content">    <span class="code-string">Ideia + cuidado</span></span></div>
+            <div class="code-row"><span class="line-no">04</span><span class="code-content">  <span class="code-muted">&lt;/</span><span class="code-key">h1</span><span class="code-muted">&gt;</span></span></div>
+            <div class="code-row"><span class="line-no">05</span><span class="code-content">  <span class="code-muted">&lt;</span><span class="code-key">p</span><span class="code-muted">&gt;</span></span></div>
+            <div class="code-row"><span class="line-no">06</span><span class="code-content">    <span class="code-value">Feito para pessoas.</span></span></div>
+            <div class="code-row"><span class="line-no">07</span><span class="code-content">  <span class="code-muted">&lt;/</span><span class="code-key">p</span><span class="code-muted">&gt;</span></span></div>
+            <div class="code-row"><span class="line-no">08</span><span class="code-content"><span class="code-muted">&lt;/</span><span class="code-key">section</span><span class="code-muted">&gt;</span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="skills-strip" aria-label="Tecnologias">
+      <div class="wrap skills-inner">
+        <span class="skills-label">Meu espaço de criação</span>
+        <div class="skill-list">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Design responsivo</span>
+          <span class="skill">Acessibilidade</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="wrap section" id="projetos" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Uma seleção do meu trabalho</span>
+          <h2 id="projects-title">Projetos em destaque</h2>
+        </div>
+        <p>Boas interfaces juntam intenção, conteúdo e atenção aos detalhes. É assim que gosto de construir.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-preview preview-shop" aria-hidden="true">
+            <div class="preview-browser">
+              <div class="preview-bar"><i></i><i></i><i></i></div>
+              <div class="shop-screen">
+                <div class="shop-nav"><span>casa calma</span><span>coleção &nbsp; sobre &nbsp; sacola (0)</span></div>
+                <div class="shop-hero">
+                  <div>
+                    <div class="shop-title">Menos, mas melhor.</div>
+                    <div class="shop-caption">Objetos feitos para acompanhar seu dia.</div>
+                    <div class="shop-cta"></div>
+                  </div>
+                  <div class="product-shape"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta"><span class="project-type">E-commerce · conceito</span><span class="project-year">01</span></div>
+            <h3>Casa Calma</h3>
+            <p>Uma vitrine digital para uma marca de casa, com navegação simples e foco em apresentar cada produto.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-preview preview-dashboard" aria-hidden="true">
+            <div class="preview-browser">
+              <div class="preview-bar"><i></i><i></i><i></i></div>
+              <div class="dashboard-screen">
+                <div class="dashboard-sidebar"><i></i><i></i><i></i><i></i></div>
+                <div class="dashboard-main">
+                  <div class="dashboard-title">Visão geral</div>
+                  <div class="dashboard-sub">Acompanhe o que importa hoje.</div>
+                  <div class="stat-row"><div class="stat"><b>1.284</b><span>VISITAS</span></div><div class="stat"><b>38,6%</b><span>CONVERSÃO</span></div><div class="stat"><b>+12%</b><span>SEMANA</span></div></div>
+                  <div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta"><span class="project-type">Dashboard · conceito</span><span class="project-year">02</span></div>
+            <h3>Painel de resultados</h3>
+            <p>Um painel responsivo que organiza métricas em uma leitura visual direta e fácil de entender.</p>
+            <div class="project-tags"><span>JavaScript</span><span>CSS Grid</span><span>UI responsiva</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="project-disclaimer">Os projetos acima são exemplos conceituais para esta primeira versão. Troque-os por trabalhos seus e adicione links para demonstração e código quando estiverem prontos.</p>
+    </section>
+
+    <section class="about" id="sobre" aria-labelledby="about-title">
+      <div class="wrap about-inner">
+        <div>
+          <span class="eyebrow">Além do código</span>
+          <h2 id="about-title">Tecnologia boa é a que ajuda alguém.</h2>
+        </div>
+        <div class="about-copy">
+          <p>Sou João Paulo, desenvolvedor web. Gosto de transformar ideias em páginas e interfaces que sejam simples de usar, agradáveis de explorar e pensadas para diferentes telas.</p>
+          <p>Em cada projeto, busco equilibrar uma base bem-feita com uma experiência cuidadosa: código organizado, carregamento leve e atenção a quem está do outro lado da tela.</p>
+          <div class="about-values" aria-label="Princípios de trabalho">
+            <span>Curiosidade constante</span>
+            <span>Detalhes com intenção</span>
+            <span>Feito para pessoas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato" aria-labelledby="contact-title">
+      <div class="wrap">
+        <span class="eyebrow">Vamos tirar uma ideia do papel?</span>
+        <h2 id="contact-title">Estou a uma mensagem de distância.</h2>
+        <p>Tem um projeto, uma oportunidade ou só quer trocar uma ideia sobre desenvolvimento web? Vou gostar de conversar.</p>
+        <a class="button" href="mailto:seuemail@exemplo.com">
+          Me escreva
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6.5 10 11l6-4.5M5 5h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> João Paulo. Feito com cuidado.</span>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </footer>
+  <script>
+    const revealTargets = document.querySelectorAll(
+      ".skills-inner, .section-heading, .project-card, .about-inner, .contact .wrap, .footer-inner"
+    );
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!reduceMotion) {
+      const codeCard = document.querySelector(".code-card");
+      const codeLines = codeCard.querySelectorAll(".code-content");
+      const textNodes = [];
+
+      codeLines.forEach((line) => {
+        const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+      });
+
+      let characterIndex = 0;
+      textNodes.forEach((textNode) => {
+        const characters = Array.from(textNode.textContent);
+        const fragment = document.createDocumentFragment();
+
+        characters.forEach((character) => {
+          const span = document.createElement("span");
+          span.className = "code-character";
+          span.style.setProperty("--typing-delay", `${characterIndex * 28}ms`);
+          span.textContent = character;
+          fragment.appendChild(span);
+          characterIndex += 1;
+        });
+
+        textNode.replaceWith(fragment);
+      });
+
+      codeCard.classList.add("is-typing");
+    }
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      revealTargets.forEach((target) => target.setAttribute("data-reveal", ""));
+      document.body.classList.add("motion-ready");
+
+      const codeCard = document.querySelector(".code-card");
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === codeCard) {
+            entry.target.classList.toggle("is-typing", entry.isIntersecting);
+          } else {
+            entry.target.classList.toggle("is-visible", entry.isIntersecting);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+      revealObserver.observe(codeCard);
+    }
+  </script>
+</body>
+</html>

@@ -609,13 +609,19 @@
       revealTargets.forEach((target) => target.setAttribute("data-reveal", ""));
       document.body.classList.add("motion-ready");
 
+      const codeCard = document.querySelector(".code-card");
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("is-visible", entry.isIntersecting);
+          if (entry.target === codeCard) {
+            entry.target.classList.toggle("is-typing", entry.isIntersecting);
+          } else {
+            entry.target.classList.toggle("is-visible", entry.isIntersecting);
+          }
         });
       }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
 
       revealTargets.forEach((target) => revealObserver.observe(target));
+      revealObserver.observe(codeCard);
     }
   </script>
 </body>
